@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>Toko Top Up Fajar — Free Fire</title>
+<style>
+:root{--y:#ffd400;--bg:#0a0a0c;--panel:#171719;--muted:#bcbcc2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-30%;z-index:-2;background:radial-gradient(circle at 20% 20%,#4a3b00 0,transparent 28%),radial-gradient(circle at 80% 65%,#262000 0,transparent 25%),linear-gradient(135deg,#090909,#191919,#080808);background-size:150% 150%;animation:bgmove 14s ease-in-out infinite alternate}
+@keyframes bgmove{to{background-position:100% 0,0 100%,100% 100%}}
+.particle{position:fixed;z-index:-1;width:5px;height:5px;background:var(--y);border-radius:50%;opacity:.55;box-shadow:0 0 12px var(--y);animation:float 9s linear infinite}
+.particle:nth-child(1){left:8%;bottom:-10px;animation-delay:-2s}.particle:nth-child(2){left:35%;bottom:-10px;animation-delay:-6s}.particle:nth-child(3){left:68%;bottom:-10px;animation-delay:-4s}.particle:nth-child(4){left:90%;bottom:-10px;animation-delay:-7s}
+@keyframes float{0%{transform:translateY(0);opacity:0}15%{opacity:.6}100%{transform:translateY(-110vh) translateX(50px);opacity:0}}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:14px max(5%,calc((100% - 1100px)/2));background:#0b0b0de8;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff15}
+.logo{font-weight:950;letter-spacing:.6px;color:var(--y);font-size:1.05rem}.logo span{color:#fff}
+button,.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;transition:transform .2s,filter .2s}button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.yellow{background:var(--y);color:#111}.darkbtn{background:#28282b;color:#fff;border:1px solid #ffffff22}
+main{max-width:1100px;margin:auto;padding:28px 18px 60px}
+.hero{position:relative;overflow:hidden;border:1px solid #ffffff1c;border-radius:24px;padding:34px 25px;background:linear-gradient(115deg,#1c1b14ed,#141416ee);box-shadow:0 18px 70px #0008}
+.hero:after{content:"FAJAR";position:absolute;right:2%;top:-15px;font-size:clamp(4rem,16vw,10rem);font-weight:1000;color:#ffd4000c;transform:rotate(-12deg);pointer-events:none}
+.tag{display:inline-block;background:#ffd4001a;border:1px solid #ffd40055;color:var(--y);border-radius:999px;padding:6px 11px;font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.03;margin:16px 0 10px;max-width:700px}h1 em{font-style:normal;color:var(--y)}p{color:var(--muted);line-height:1.6}.hero p{max-width:560px}.section-title{margin:30px 0 14px;font-size:1.35rem}.section-title span{color:var(--y)}
+.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.panel{background:#171719ed;border:1px solid #ffffff17;border-radius:20px;padding:20px;min-width:0}
+label{display:block;font-size:.9rem;font-weight:700;margin:13px 0 7px}input{width:100%;padding:13px 14px;background:#0c0c0e;color:white;border:1px solid #3b3b40;border-radius:11px;outline:none}input:focus{border-color:var(--y)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.diamond{text-align:left;background:#202023;color:white;border:1px solid #3b3b3e;padding:15px;border-radius:15px;min-height:102px}
+.diamond.selected{border:2px solid var(--y);background:#332d0d}.diamond strong{display:block;font-size:1.05rem}.diamond small{display:block;color:#c5c5c8;margin-top:5px}.gem{color:#55d8ff;font-size:1.2rem;margin-right:5px}.price{color:var(--y);font-size:1.08rem;font-weight:900;margin-top:7px}
+.summaryrow{display:flex;justify-content:space-between;gap:12px;margin:12px 0;color:#ddd}.summaryrow strong{color:white;text-align:right}.total{border-top:1px solid #ffffff20;padding-top:15px;margin-top:15px;font-size:1.1rem}.total strong{color:var(--y);font-size:1.35rem}
+.paybox{background:#0d2118;border:1px solid #176e46;border-radius:14px;padding:14px;margin:14px 0}.paybox strong{color:#53efa3}.note{font-size:.82rem;color:#b9b9bd}
+.voucher-row{display:flex;gap:8px}.voucher-row input{flex:1;min-width:0}.status{min-height:23px;font-size:.86rem;margin-top:8px;color:#8dffb9}.full{width:100%;margin-top:12px}
+.google-area{margin-top:15px;padding-top:14px;border-top:1px solid #ffffff1c}
+.loading{display:none;align-items:center;gap:10px;color:var(--y);font-size:.9rem;margin-top:12px}.loading.show{display:flex}.spinner{width:17px;height:17px;border:2px solid #5e5100;border-top-color:var(--y);border-radius:50%;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+footer{text-align:center;padding:25px;color:#85858b;font-size:.8rem;border-top:1px solid #ffffff12}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:#222;color:#fff;border:1px solid #555;padding:12px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:20}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.hero{padding:26px 20px}header{padding:12px 16px}main{padding:20px 13px 45px}.panel{padding:16px}}
+</style></head>
+<body>
+<div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+<header><div class="logo">TOKO TOP UP <span>FAJAR</span></div><a href="#login"><button class="darkbtn">Login Google</button></a></header>
+<main>
+<section class="hero"><span class="tag">⚡ TOP UP FREE FIRE</span><h1>TOP UP DIAMOND.<br><em>BOOYAH BARENG FAJAR!</em></h1><p>Top up Free Fire dengan pilihan paket yang jelas. Pilih diamond, masukkan Player ID, dan periksa ringkasan pembayaran sebelum melanjutkan.</p><a href="#order"><button class="yellow">Mulai Top Up ↓</button></a></section>
+<h2 class="section-title" id="order">1. Pilih <span>Diamond</span></h2>
+<div class="layout">
+<section class="panel">
+<label for="playerId">Player ID Free Fire</label><input id="playerId" inputmode="numeric" placeholder="Masukkan Player ID" maxlength="24">
+<label for="nickname">Nickname (opsional)</label><input id="nickname" placeholder="Nama di game">
+<label>Paket Diamond</label>
+<div class="grid">
+<button class="diamond selected" data-diamonds="70" data-price="10000"><strong><span class="gem">💎</span>70 Diamond</strong><small>Paket hemat</small><div class="price">Rp10.000</div></button>
+<button class="diamond" data-diamonds="140" data-price="20000"><strong><span class="gem">💎</span>140 Diamond</strong><small>Paket hemat</small><div class="price">Rp20.000</div></button>
+<button class="diamond" data-diamonds="355" data-price="50000"><strong><span class="gem">💎</span>355 Diamond</strong><small>Paket populer</small><div class="price">Rp50.000</div></button>
+<button class="diamond" data-diamonds="720" data-price="100000"><strong><span class="gem">💎</span>720 Diamond</strong><small>Paket besar</small><div class="price">Rp100.000</div></button>
+</div>
+<label for="voucher">Kode voucher</label><div class="voucher-row"><input id="voucher" placeholder="Contoh: FAJAR5"><button class="darkbtn" id="applyVoucher">Pakai</button></div>
+<div class="status" id="voucherStatus" aria-live="polite"></div><p class="note">Voucher demo: <b>FAJAR5</b> memberi diskon 5% pada ringkasan halaman ini. Belum terhubung ke pembayaran nyata.</p>
+</section>
+<aside class="panel">
+<h2 style="margin-top:0">2. Ringkasan Pesanan</h2><div class="summaryrow"><span>Diamond</span><strong id="sumDiamonds">70 Diamond</strong></div><div class="summaryrow"><span>Player ID</span><strong id="sumId">Belum diisi</strong></div><div class="summaryrow"><span>Harga</span><strong id="sumPrice">Rp10.000</strong></div><div class="summaryrow"><span>Voucher</span><strong id="sumDiscount">Rp0</strong></div><div class="summaryrow total"><span>Total</span><strong id="sumTotal">Rp10.000</strong></div>
+<div class="paybox"><strong>💚 Pembayaran hanya via DANA</strong><p style="margin:7px 0 3px;color:#fff">Nomor DANA tujuan:</p><strong style="font-size:1.25rem;color:#fff">081287811860</strong><button class="darkbtn" id="copyDana" style="margin-left:5px;padding:8px 10px">Salin</button><p class="note">Pastikan nama penerima dan nominal benar di aplikasi DANA. Jangan bagikan PIN atau OTP kepada siapa pun.</p></div>
+<label style="display:flex;gap:9px;align-items:flex-start;font-weight:500"><input id="confirm" type="checkbox" style="width:auto;margin-top:4px"> Saya sudah memeriksa Player ID, total harga, dan nomor tujuan.</label>
+<button class="yellow full" id="payButton">Lanjutkan</button><div class="loading" id="loading"><span class="spinner"></span> Menyiapkan ringkasan pesanan…</div><p class="note">Demo front-end: tidak memverifikasi transfer, tidak memproses pesanan, dan tidak mengirim diamond otomatis.</p>
+<div class="google-area" id="login"><h3>Login dengan Google</h3><p class="note">Untuk login sungguhan, siapkan Google Client ID dan validasi token di server. Tombol demo ini tidak meminta password dan tidak melakukan autentikasi.</p><button class="darkbtn full" id="googleDemo">G — Login Google (demo)</button><div class="status" id="googleStatus"></div></div>
+</aside></div></main>
+<footer>TOKO TOP UP FAJAR • Situs demo independen, bukan situs resmi Garena.</footer><div class="toast" id="toast" role="status"></div>
+<script>
+const fmt=n=>'Rp'+Math.round(n).toLocaleString('id-ID');let selected={diamonds:70,price:10000},voucherOn=false;const $=id=>document.getElementById(id);
+function update(){let id=$('playerId').value.trim(),d=voucherOn?selected.price*.05:0;$('sumDiamonds').textContent=selected.diamonds+' Diamond';$('sumId').textContent=id||'Belum diisi';$('sumPrice').textContent=fmt(selected.price);$('sumDiscount').textContent=d?'-'+fmt(d):fmt(0);$('sumTotal').textContent=fmt(selected.price-d)}
+document.querySelectorAll('.diamond').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.diamond').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');selected={diamonds:+b.dataset.diamonds,price:+b.dataset.price};update()}));$('playerId').addEventListener('input',update);
+$('applyVoucher').addEventListener('click',()=>{let c=$('voucher').value.trim().toUpperCase();voucherOn=c==='FAJAR5';$('voucherStatus').textContent=voucherOn?'Voucher demo aktif: diskon 5% pada ringkasan.':(c?'Kode voucher tidak dikenal.':'Masukkan kode voucher.');$('voucherStatus').style.color=voucherOn?'#8dffb9':'#ffb7a8';update()});
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2800)}
+$('copyDana').addEventListener('click',async()=>{try{await navigator.clipboard.writeText('081287811860');toast('Nomor DANA disalin.')}catch(e){toast('Nomor DANA: 081287811860')}});
+$('payButton').addEventListener('click',()=>{if(!$('playerId').value.trim()){toast('Masukkan Player ID terlebih dahulu.');$('playerId').focus();return}if(!$('confirm').checked){toast('Centang konfirmasi sebelum melanjutkan.');return}$('loading').classList.add('show');$('payButton').disabled=true;setTimeout(()=>{$('loading').classList.remove('show');$('payButton').disabled=false;let total=fmt(selected.price-(voucherOn?selected.price*.05:0));let msg=`Ringkasan demo Toko Top Up Fajar\\nPlayer ID: ${$('playerId').value.trim()}\\nDiamond: ${selected.diamonds}\\nTotal: ${total}\\nDANA tujuan: 081287811860\\n\\nPeriksa penerima dan nominal di aplikasi DANA. Transfer tidak dilakukan otomatis oleh website ini.`;if(confirm('Ringkasan siap. Website tidak dapat memverifikasi transfer atau mengirim diamond otomatis. Buka WhatsApp untuk membawa ringkasan pesanan?'))window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank','noopener');else toast('Periksa detail pembayaran sebelum transfer.');},650)});
+$('googleDemo').addEventListener('click',()=>{$('googleStatus').textContent='Tombol demo saja. Login nyata memerlukan konfigurasi Google Identity Services dan validasi token di server.'});update();
+</script></body></html>
